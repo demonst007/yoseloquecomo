@@ -1,0 +1,2 @@
+/* Legacy block 04 (id="wmtrcss"), extracted verbatim from reference/original.html. */
+@keyframes wmflash{45%{opacity:.3;filter:drop-shadow(0 0 12px var(--t)) brightness(1.15);transform:translate(-50%,-50%) scale(1.02)}}#wmk.wmf{animation:wmflash .9s ease-in-out}

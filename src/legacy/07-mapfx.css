@@ -1,0 +1,20 @@
+/* Legacy block 07 (id="mapfx"), extracted verbatim from reference/original.html. */
+#tfl{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0;background:radial-gradient(130% 55% at 50% 0%,color-mix(in srgb,var(--t) 55%,transparent),transparent 72%)}.wlc{position:fixed;inset:0;z-index:2147483000;background:radial-gradient(70% 50% at 50% 18%,#16210a,#05070d 72%);color:#fff;overflow-y:auto;display:flex;flex-direction:column;align-items:center;padding:max(22px,env(safe-area-inset-top)) 22px max(22px,env(safe-area-inset-bottom));animation:wfade .5s ease both}
+.wlc .wi{width:100%;max-width:420px;margin:auto 0;padding:8px 0}
+.wlc .wlg{width:104px;aspect-ratio:1;margin:0 auto 18px;border-radius:26px;background:var(--logo) center/cover;box-shadow:0 0 0 2px #7CFC00,0 0 14px 3px rgba(124,252,0,.9),0 0 38px 10px rgba(124,252,0,.6),0 0 90px 26px rgba(57,255,20,.35);animation:lgp .9s ease-in-out infinite alternate}
+.wlc h2{font-family:var(--fd,"Barlow Condensed"),sans-serif;font-style:italic;text-transform:uppercase;font-size:30px;line-height:1.05;text-align:center;margin:0 0 8px;color:#fff}
+.wlc p{text-align:center;color:rgba(255,255,255,.72);margin:0 0 14px;font-size:16px}
+.wlc label{display:block;font-size:14px;color:rgba(255,255,255,.75);margin-top:14px}
+.wlc input,.wlc select{width:100%;margin-top:6px;padding:13px 14px;font-size:17px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;box-sizing:border-box;min-height:0}
+.wlc select option{color:#000}
+.wlc .wc{display:flex;gap:8px;margin-top:6px}
+.wlc .ch{flex:1;padding:12px 0;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff;font-size:16px;min-height:0}
+.wlc .ch.on{background:var(--acc,#2745D6);border-color:transparent}
+.wlc .wb{display:flex;gap:10px;margin-top:22px}
+.wlc .wb button{flex:1;padding:15px;font-size:18px;border-radius:14px;border:0;min-height:0}
+.wlc .wp{background:linear-gradient(135deg,#2745D6,#5B7CFF);color:#fff;font-weight:700}
+.wlc .wg2{background:rgba(255,255,255,.1);color:#fff}
+.wlc .we{color:#FF8A80;min-height:20px;margin-top:10px;text-align:center}
+.wlc .wd{display:flex;gap:6px;justify-content:center;margin:0 0 16px}.wlc .wd i{width:26px;height:4px;border-radius:2px;background:rgba(255,255,255,.2)}.wlc .wd i.on{background:#7CFC00}
+@keyframes wfade{from{opacity:0}}
+@media(prefers-reduced-motion:reduce){.wlc,.wlc .wlg{animation:none}}

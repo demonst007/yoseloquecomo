@@ -1,0 +1,2 @@
+/* Legacy block 03 (id="polish"), extracted verbatim from reference/original.html. */
+button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}button:focus-visible,summary:focus-visible{outline:2px solid var(--t);outline-offset:2px}details>summary{cursor:pointer}details[open]>*:not(summary){animation:rise .3s cubic-bezier(.2,.8,.2,1) both}.card,.item{transition:background .2s ease,box-shadow .2s ease}

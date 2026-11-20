@@ -1,0 +1,6 @@
+-- Seed data for local development only (`npx supabase db reset` runs it after
+-- the migrations). It is never applied to the hosted project by `db push`.
+--
+-- Intentionally empty: create test users from the app (sign-up) or from Studio
+-- (http://127.0.0.1:54323 > Authentication); the on_auth_user_created trigger
+-- creates their profile row automatically.

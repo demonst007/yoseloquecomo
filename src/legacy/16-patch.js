@@ -1,0 +1,3 @@
+/* Legacy block 16, extracted verbatim from reference/original.html. Classic script: shares global scope with the other legacy blocks. */
+(function(){const g0=window.gym;if(typeof g0!=='function')return;
+window.gym=function(){try{if(!S.vj2){S.vj2=1;const G=gE();Object.keys(G).forEach(k=>{if(/^TR-[AB] /.test(k))delete G[k]});if(/^TR-[AB] /.test(gd))gd=Object.keys(G).find(d=>d!='Abdominales')||gd;save()}}catch(e){}try{if(!S.rxd){S.rxd=1;const c=S.xc||{},lim=dayAdd(td(),-3);Object.keys(c).forEach(k=>{if(c[k]>=lim&&!(S.xd&&S.xd[k]))delete c[k]});save()}}catch(e){}return g0.apply(this,arguments)}})()

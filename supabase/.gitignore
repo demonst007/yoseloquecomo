@@ -1,0 +1,9 @@
+# Supabase CLI
+.branches
+.temp
+
+# Local secrets (auth providers, functions)
+.env
+.env.*
+!.env.example
+functions/.env

@@ -1,0 +1,10 @@
+dist/
+src/legacy/
+reference/
+supabase/
+android/
+ios/
+index.html
+playwright-report/
+test-results/
+package-lock.json

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<script>/* Bootstrap: legacy code calls claude.use(...) while the HTML is still parsing. Calls are queued here and answered by src/platform (an ES module, which runs after parsing). */window.claude={use:function(n){return new Promise(function(r,j){(window.__platformQ=window.__platformQ||[]).push([n,r,j])})}};</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>yoseloquecomo</title>
+<meta name="theme-color" content="#2745D6">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="yoseloquecomo">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.jpg">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/webp" href="/icons/favicon.webp">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Barlow+Condensed:wght@600;700&display=swap">
+<link rel="stylesheet" href="/legacy/01-styles.css" data-legacy vite-ignore>
+<link id="wmcss" rel="stylesheet" href="/legacy/02-wmcss.css" data-legacy vite-ignore>
+<link id="polish" rel="stylesheet" href="/legacy/03-polish.css" data-legacy vite-ignore>
+<link id="wmtrcss" rel="stylesheet" href="/legacy/04-wmtrcss.css" data-legacy vite-ignore>
+<link id="datefx" rel="stylesheet" href="/legacy/05-datefx.css" data-legacy vite-ignore>
+<script id="ffhead" src="/legacy/06-ffhead.js" data-legacy vite-ignore></script>
+<link id="mapfx" rel="stylesheet" href="/legacy/07-mapfx.css" data-legacy vite-ignore>
+</head><body><div id="wmk" aria-hidden="true"></div>
+<div class="row" style="justify-content:space-between;flex-wrap:nowrap"><h1 onclick="mnu()" style="cursor:pointer"><span id="nm">Javi</span></h1><div class="row" style="flex-wrap:nowrap;gap:6px"><button class="g" id="thb" onclick="tth()" aria-label="Cambiar tema">🌓</button><button class="g" onclick="fz(-1)" aria-label="Letra más pequeña">A−</button><button class="g" onclick="fz(1)" aria-label="Letra más grande">A+</button></div></div><div class="mut" id="fecha"></div><div class="mut" id="cloud"></div>
+<main id="v"></main>
+<nav><button id="b0" onclick="tgo(0)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v8M4 3v5a3 3 0 0 0 6 0V3M7 11v10M17 21V3c-2 1-3 4-3 8h3"/></svg>Dieta</button><button id="b1" onclick="tgo(1)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10a4 4 0 0 1 8 0M12 10l2-2"/></svg>Peso</button><button id="b2" onclick="tgo(2)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6v12M3 9v6M18 6v12M21 9v6M6 12h12"/></svg>Gimnasio</button><button id="b3" onclick="tgo(3)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Semana</button></nav><div id="tmr" hidden onclick="stopT()"></div><div id="mdl" hidden style="position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:20px;z-index:20"><div class="card" style="width:100%;max-width:420px"><b>Nombre de la comida</b><input id="mn" placeholder="Ej. Desayuno" style="width:100%;margin:10px 0"><div class="row"><button onclick="saveM()">Guardar</button><button class="g" onclick="$('mdl').hidden=true">Cancelar</button></div></div></div>
+<script src="/legacy/08-app.js" data-legacy vite-ignore></script>
+<script src="/legacy/09-patch.js" data-legacy vite-ignore></script>
+<script id="calmajs" src="/legacy/10-calmajs.js" data-legacy vite-ignore></script>
+<script src="/legacy/11-patch.js" data-legacy vite-ignore></script>
+<script id="wmtr" src="/legacy/12-wmtr.js" data-legacy vite-ignore></script>
+<script id="ffjs" src="/legacy/13-ffjs.js" data-legacy vite-ignore></script>
+<script src="/legacy/14-patch.js" data-legacy vite-ignore></script>
+<script src="/legacy/15-patch.js" data-legacy vite-ignore></script>
+<script src="/legacy/16-patch.js" data-legacy vite-ignore></script>
+<script src="/legacy/17-patch.js" data-legacy vite-ignore></script>
+<link rel="stylesheet" href="/legacy/18-styles.css" data-legacy vite-ignore>
+<script id="colcal" src="/legacy/19-colcal.js" data-legacy vite-ignore></script>
+<link rel="stylesheet" href="/legacy/20-styles.css" data-legacy vite-ignore>
+<script id="dock4" src="/legacy/21-dock4.js" data-legacy vite-ignore></script>
+<link rel="stylesheet" href="/legacy/22-styles.css" data-legacy vite-ignore>
+<script src="/legacy/90-bridge.js" data-legacy vite-ignore></script>
+<script type="module" src="/src/main.js"></script>
+</body></html>

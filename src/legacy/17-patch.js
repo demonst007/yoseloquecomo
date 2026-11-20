@@ -1,0 +1,3 @@
+/* Legacy block 17, extracted verbatim from reference/original.html. Classic script: shares global scope with the other legacy blocks. */
+(function(){const g=window.go;if(typeof g!=='function')return;const f=document.createElement('div');f.id='tfl';f.setAttribute('aria-hidden','true');document.body.appendChild(f);
+window.go=function(i){const p=tab,r=g.apply(this,arguments);try{if(tab!==p){if(f.animate&&!matchMedia('(prefers-reduced-motion: reduce)').matches)f.animate([{opacity:.5},{opacity:0}],{duration:600,easing:'ease-out'});[60,450,950].forEach(t=>setTimeout(()=>dispatchEvent(new Event('scroll')),t))}}catch(e){}return r}})()

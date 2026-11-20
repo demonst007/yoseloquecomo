@@ -1,0 +1,2 @@
+/* Legacy block 02 (id="wmcss"), extracted verbatim from reference/original.html. */
+:root{--wmb:url(/img/watermark-b.webp);--wmu:url(/img/watermark-u.webp)}#wmk{position:fixed;left:50%;top:50%;width:min(74vw,360px);aspect-ratio:300/352;transform:translate(-50%,-50%);background:var(--wmu) center/contain no-repeat;opacity:.07;pointer-events:none;z-index:2}@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) #wmk{opacity:.10}}
