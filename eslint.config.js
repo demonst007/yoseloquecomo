@@ -7,6 +7,7 @@ export default [
     // by the parity e2e tests instead. Supabase functions are Deno (deno lint).
     ignores: [
       'dist/',
+      'dist-test/',
       'src/legacy/',
       'reference/',
       'supabase/',

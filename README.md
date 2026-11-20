@@ -28,15 +28,17 @@ Sin `.env.local` la app funciona en **modo local**: sin cuenta ni IA, y los dato
 
 ## Scripts
 
-| Script             | Qué hace                                                      |
-| ------------------ | ------------------------------------------------------------- |
-| `npm run dev`      | Servidor de desarrollo                                        |
-| `npm run build`    | Build de producción en `dist/`                                |
-| `npm run preview`  | Sirve el build                                                |
-| `npm run lint`     | ESLint (código nuevo de `src/`, `tests/` y `tools/`)          |
-| `npm run format`   | Prettier                                                      |
-| `npm run test:e2e` | Pruebas Playwright: paridad con el original + modo nube       |
-| `npm run check`    | lint + formato + build (lo mismo que CI antes de las pruebas) |
+| Script                            | Qué hace                                                                          |
+| --------------------------------- | --------------------------------------------------------------------------------- |
+| `npm run dev`                     | Servidor de desarrollo                                                            |
+| `npm run build`                   | Build de producción en `dist/`                                                    |
+| `npm run preview`                 | Sirve el build                                                                    |
+| `npm run lint`                    | ESLint (código nuevo de `src/`, `tests/` y `tools/`)                              |
+| `npm run format`                  | Prettier                                                                          |
+| `npm run test:unit`               | Pruebas unitarias (Vitest)                                                        |
+| `npm run test:e2e`                | Pruebas Playwright: paridad con el original, modo nube, escáner                   |
+| `npm run cap:android` / `cap:ios` | Build + sync y abre Android Studio / Xcode (ver [docs/native.md](docs/native.md)) |
+| `npm run check`                   | lint + formato + build (lo mismo que CI antes de las pruebas)                     |
 
 ## Estructura
 
@@ -47,10 +49,14 @@ src/
     90-bridge.js           Puente: expone a los módulos los globales let/const que necesitan
   platform/                Sustituye al runtime de claude.ai (claude.use) — Supabase, IA, descargas
   ui/                      UI nueva: pantalla de login, sección "Cuenta" del menú
+  features/                Funciones nuevas: escáner de códigos (Open Food Facts), notificaciones, integración nativa
   main.js                  Entrada (módulo ES)
 public/                    Iconos, imágenes y manifest PWA
 supabase/                  Migraciones SQL, Edge Functions (ai, delete-account), config
 tests/e2e/                 Playwright
+tests/unit/                Vitest
+android/, ios/             Proyectos nativos Capacitor (ver docs/native.md)
+assets/                    Originales de iconos y splash nativos (tools/generate-native-assets.mjs)
 tools/                     Extracción del HTML original y plugin de Vite para los bloques legacy
 reference/original.html    El HTML original, referencia para las pruebas de paridad
 ```
@@ -76,6 +82,15 @@ cambio en `src/legacy/` debe mantener estas pruebas en verde (o actualizarlas a 
 1. ✅ Repo, build, extracción fiel y paridad verificada
 2. ✅ Capa de plataforma (Supabase, IA, descargas) y login
 3. ✅ Esquema Supabase, RLS, Edge Functions `ai` y `delete-account`
-4. ⏳ Capacitor: Android/iOS, cámara, notificaciones, escáner de códigos de barras (Open Food Facts)
-5. ⏳ Multiusuario completo: onboarding y perfil sin valores de Javi por defecto; fotos de progreso en Storage
-6. ⏳ Migración progresiva de `src/legacy/` a módulos con pruebas unitarias
+4. ✅ Capacitor: Android (APK compilado y probado en emulador) e iOS (proyecto generado, compilar en Mac); escáner de
+   códigos de barras/QR con Open Food Facts; recordatorio de suplementos como notificación local; vibración, botón atrás,
+   compartir. Push preparado pero desactivado hasta configurar Firebase/APNs
+5. ⏳ Multiusuario completo: quitar los valores por defecto de Javi (nombre, fecha de nacimiento, rutinas) y apoyarse en
+   el asistente de bienvenida que ya existe; fotos de progreso en Storage (hoy solo en el dispositivo)
+6. ⏳ Bloqueo biométrico nativo (WebAuthn no funciona en el WebView) y aviso de fin de descanso en segundo plano
+7. ⏳ Migración progresiva de `src/legacy/` a módulos con pruebas unitarias
+
+## Problemas conocidos en Windows
+
+Si Vitest falla con _"failed to find the current suite"_, la ruta del proyecto tiene la letra de unidad en minúscula
+(`c:...`, típico al abrir la terminal desde VS Code). Ejecuta desde `C:...` (p. ej. `cd C:Users...javi`).

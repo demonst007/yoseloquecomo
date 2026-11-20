@@ -27,21 +27,30 @@ async function open(page, which, state) {
   await page.route(ORIGINAL_URL + '**', (r) => r.fulfill({ body: ORIGINAL, contentType: 'text/html; charset=utf-8' }));
   await page.clock.setFixedTime(FIXED_NOW);
   await page.addInitScript((s) => {
+    window.__PARITY__ = true; // migrated app: skip intentional UI additions
     localStorage.clear();
     if (s) localStorage.setItem('plan1', JSON.stringify(s));
     Math.random = () => 0.42; // deterministic decorative randomness
   }, state);
   await page.goto(which === 'original' ? ORIGINAL_URL : '/');
-  // Let start-up effects settle: deferred renders and the "new badges" confetti
-  // (cele(): removed after 2.4 s), whose exact timing depends on load speed.
-  await page.waitForTimeout(1500);
+  await settle(page, 1500);
   // Inside claude.ai, claude.use('sample') resolves and triggers a second Diet
   // render at start-up (which can award badges). Standalone, the original skips
   // it (ReferenceError on `claude`), the migrated app does it: render once more
   // in both so they are compared in the same state.
   await page.evaluate(() => window.go(0));
-  await page.waitForTimeout(3000);
+  await settle(page, 700);
   return errors;
+}
+
+/**
+ * Waits `ms`, then until transient effects are gone: the "new badges"/record
+ * confetti (cele(): a canvas + .ct toast, ~2.4 s) runs longer on a loaded machine.
+ */
+async function settle(page, ms) {
+  await page.waitForTimeout(ms);
+  await page.waitForFunction(() => !document.querySelector('body > .ct, body > canvas'), null, { timeout: 15_000 });
+  await page.waitForTimeout(300);
 }
 
 /** Normalised snapshot of what the user sees in the main view. */
@@ -67,7 +76,7 @@ async function walk(page) {
   const out = {};
   for (const tab of [0, 1, 2, 3]) {
     await page.evaluate((i) => window.go(i), tab);
-    await page.waitForTimeout(700);
+    await settle(page, 700);
     out[`tab${tab}`] = await snapshot(page);
     out[`tab${tab}-png`] = await page.screenshot({ fullPage: true, animations: 'disabled' });
   }

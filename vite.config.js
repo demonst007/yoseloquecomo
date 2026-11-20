@@ -9,4 +9,7 @@ export default defineConfig({
     target: 'es2020',
     sourcemap: true,
   },
+  test: {
+    include: ['tests/unit/**/*.test.js'],
+  },
 });

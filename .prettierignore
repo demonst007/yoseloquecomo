@@ -8,3 +8,4 @@ index.html
 playwright-report/
 test-results/
 package-lock.json
+dist-test/

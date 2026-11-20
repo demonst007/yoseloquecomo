@@ -3,6 +3,7 @@
    cannot reach them cleanly. This exposes the few they need. Keep it tiny. */
 window.__legacy = {
   getState: function () { return S; },
+  getTab: function () { return tab; },
   storageKey: K,
   rerender: function () { try { go(tab); } catch (e) {} },
   cloud: function () { return cloud(); },

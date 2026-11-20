@@ -1,0 +1,21 @@
+{
+  "appId": "com.yoseloquecomo.app",
+  "appName": "yoseloquecomo",
+  "webDir": "dist",
+  "backgroundColor": "#0F1626",
+  "android": {
+    "allowMixedContent": false
+  },
+  "ios": {
+    "contentInset": "never"
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_notify",
+      "iconColor": "#2745D6"
+    },
+    "PushNotifications": {
+      "presentationOptions": ["badge", "sound", "alert"]
+    }
+  }
+}

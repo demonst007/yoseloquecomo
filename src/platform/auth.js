@@ -1,4 +1,8 @@
+import { App } from '@capacitor/app';
+import { Browser } from '@capacitor/browser';
 import { supabase } from './supabase.js';
+import { isNative } from './native.js';
+import { NATIVE_AUTH_REDIRECT } from './config.js';
 
 let session = null;
 const listeners = new Set();
@@ -13,6 +17,20 @@ supabase?.auth.onAuthStateChange((event, next) => {
   for (const fn of listeners) fn(event, next);
 });
 
+// Native: e-mail links and OAuth come back as com.yoseloquecomo.app://auth-callback?code=...
+if (supabase && isNative) {
+  App.addListener('appUrlOpen', async ({ url }) => {
+    if (!url.startsWith(NATIVE_AUTH_REDIRECT)) return;
+    const params = new URL(url.replace('#', '?')).searchParams;
+    const code = params.get('code');
+    try {
+      if (code) await supabase.auth.exchangeCodeForSession(code);
+    } finally {
+      Browser.close().catch(() => {});
+    }
+  });
+}
+
 export const getSession = () => session;
 export const getUser = () => session?.user ?? null;
 
@@ -22,7 +40,7 @@ export function onAuthChange(fn) {
   return () => listeners.delete(fn);
 }
 
-const redirectTo = () => location.origin + location.pathname;
+const redirectTo = () => (isNative ? NATIVE_AUTH_REDIRECT : location.origin + location.pathname);
 
 function must() {
   if (!supabase) throw new Error('La nube no está configurada.');
@@ -38,7 +56,14 @@ export const sendMagicLink = (email) => must().signInWithOtp({ email, options: {
 
 export const resetPassword = (email) => must().resetPasswordForEmail(email, { redirectTo: redirectTo() });
 
-export const signInWithProvider = (provider) =>
-  must().signInWithOAuth({ provider, options: { redirectTo: redirectTo() } });
+/** OAuth (Google, Apple). Native apps open the system browser and return via deep link. */
+export async function signInWithProvider(provider) {
+  const res = await must().signInWithOAuth({
+    provider,
+    options: { redirectTo: redirectTo(), skipBrowserRedirect: isNative },
+  });
+  if (isNative && res.data?.url) await Browser.open({ url: res.data.url, presentationStyle: 'popover' });
+  return res;
+}
 
 export const signOut = () => must().signOut();
